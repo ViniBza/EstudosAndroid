@@ -1,0 +1,4 @@
+#Tue Dec 22 17:03:33 BRT 2020
+base.0=/home/vinibza/AndroidStudioProjects/BackupAndroid/Estudos em casa/Android/Udemy/CaraOuCoroa/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

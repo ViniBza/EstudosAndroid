@@ -1,0 +1,6 @@
+com/estudosandroid/vinibza/caraoucoroa/BuildConfig.java
+ com.estudosandroid.vinibza.caraoucoroa.BuildConfig
+com/estudosandroid/vinibza/caraoucoroa/ActivityJogada.java
+ com.estudosandroid.vinibza.caraoucoroa.ActivityJogada
+com/estudosandroid/vinibza/caraoucoroa/MainActivity.java
+ com.estudosandroid.vinibza.caraoucoroa.MainActivity
