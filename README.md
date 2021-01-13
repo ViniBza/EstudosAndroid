@@ -1,4 +1,4 @@
-## Etudos de Android :satisfied: :iphone: 
+## Estudos de Android :satisfied: :iphone: 
 
 Atualmente estou realizando vários cursos e tutoriais, com isso criei váríos aplicativos apenas para fins _didáticos_, então resolvi posta-los para exibir a minha evolução na plataforma. 
 
