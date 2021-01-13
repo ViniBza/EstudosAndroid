@@ -1,0 +1,5 @@
+com/estudosandroid/vinibza/calculadoradegorjeta/MainActivity.java
+ com.estudosandroid.vinibza.calculadoradegorjeta.MainActivity
+ com.estudosandroid.vinibza.calculadoradegorjeta.MainActivity$1
+com/estudosandroid/vinibza/calculadoradegorjeta/BuildConfig.java
+ com.estudosandroid.vinibza.calculadoradegorjeta.BuildConfig
