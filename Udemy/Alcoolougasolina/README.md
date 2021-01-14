@@ -5,6 +5,4 @@ Esse aplicativo funciona da seguinte maneira: quando o usuário inserir os respe
 
 * _Gifs de funcionamento do aplicativo:_
 
-![AlcoolGasolinaGif1](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Alcool%20ou%20gasolina%20-%201%20.gif)
-
-![AlcoolGasolinaGif2](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Alcool%20ou%20gasolina%20-%202.gif)
+![AlcoolGasolinaGif1](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Alcool%20ou%20gasolina%20-%201%20.gif) ![AlcoolGasolinaGif2](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Alcool%20ou%20gasolina%20-%202.gif)
