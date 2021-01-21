@@ -1,5 +1,6 @@
 package com.example.atmconsultoria.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -35,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                 enviarEmail();
+
             }
         });
 
@@ -59,6 +61,32 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+// Método de enviar email
+    public void enviarEmail(){
+
+        // Definimos uma ação de share, compartilhamento
+        Intent intent = new Intent( Intent.ACTION_SEND);
+
+
+        // Definindo o email, podendo inserir mais de 1
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"atendimento@atmconsultoria.com.br"});
+
+        //Definindo o assunto do email
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Contato via App - ATM Consultoria");
+
+        // Definindo a mensagem padrão do conteúdo do email
+        intent.putExtra(Intent.EXTRA_TEXT,  " Insira sua mensagem aqui.  :) ");
+
+
+        // Definindo o tipo de dado que vai ser compartilhado com base no mime type
+        intent.setType("message/rfc22");
+
+
+        //CreateChoose escolhe apartir da intent os app que podem atender a intent
+        startActivity( Intent.createChooser(intent, "Compartilhar") );
+
+
+    }
 
 
 // Método que chama as opções de menu
