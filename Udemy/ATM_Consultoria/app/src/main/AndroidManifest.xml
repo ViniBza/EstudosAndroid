@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATMConsultoria">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.principal.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.ATMConsultoria.NoActionBar">
             <intent-filter>

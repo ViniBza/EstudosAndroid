@@ -1,4 +1,4 @@
-package com.example.atmconsultoria.ui;
+package com.example.atmconsultoria.ui.principal;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -7,3 +7,5 @@ Atualmente estou realizando vários cursos e tutoriais, com isso criei váríos 
 * [Calculadora de gorjeta](https://github.com/ViniBza/EstudosAndroid/tree/master/Udemy/Calculadoradegorjeta): calculando valor de uma gorjeta com base na porcentagem selecionada. 
 
 * [Cara ou coroa](https://github.com/ViniBza/EstudosAndroid/tree/master/Udemy/CaraOuCoroa): jogo clássico da moeda, onde será sorteado uma posição.
+
+* [ATM Consultoria](): App de uma empresa fictícia onde aprendi o funcionamento do _Navigation Drawer_, inserção de _biblioteca_ e utilização de _ACTION SEND_.
