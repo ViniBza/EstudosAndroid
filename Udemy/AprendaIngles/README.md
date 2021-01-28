@@ -4,4 +4,4 @@ Aplicativo de aprendizagem de inglês, onde utilizei a bibliteca [_SmartTabLayou
 
 * _Gifs de funcionamento do aplicativo:_
 
-![Ingles - 1]() ![Ingles - 2]()
+![Ingles - 1](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Ingles%20-%201.gif) ![Ingles - 2](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Ingles%20-%202.gif)
