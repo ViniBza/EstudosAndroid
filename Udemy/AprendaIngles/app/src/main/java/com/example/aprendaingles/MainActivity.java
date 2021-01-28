@@ -6,9 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.example.aprendaingles.Fragment.BichosFragment;
-import com.example.aprendaingles.Fragment.NumerosFragment;
-import com.example.aprendaingles.Fragment.VogaisFragment;
+import com.example.aprendaingles.Fragments.BichosFragment;
+import com.example.aprendaingles.Fragments.NumerosFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
                 .add("Bichos", BichosFragment.class)
                 .add("Números", NumerosFragment.class)
-                .add("Vogais", VogaisFragment.class)
 
         .create());
 
