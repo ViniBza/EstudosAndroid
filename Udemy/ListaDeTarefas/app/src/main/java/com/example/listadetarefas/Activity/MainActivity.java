@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.listadetarefas.Adapter.TarefaAdapter;
 import com.example.listadetarefas.Model.Tarefa;
 import com.example.listadetarefas.R;
+import com.example.listadetarefas.helper.RecyclerItemClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,8 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        // Exibe lista de tarefas no RecycleView
-
         //Configurar um adapter
         tarefaAdapter = new TarefaAdapter(listaTaferas);
 
@@ -53,7 +51,34 @@ public class MainActivity extends AppCompatActivity {
 
        recyclerView.setAdapter(tarefaAdapter);
 
+    // Eventos de click, para funcionar precisamos implementar a classe RecyclerItemClickListener do o github
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                           //Click Simples na tela
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Tarefa tarefa = listaTaferas.get(position);
+                                Toast.makeText(getApplicationContext(),
+                                        "Click Simples", Toast.LENGTH_SHORT).show();
+                            }
 
+                           //Click Long na tela
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Tarefa tarefa = listaTaferas.get(position);
+                                Toast.makeText(getApplicationContext(),
+                                        "Click long" + tarefa.getNomeTarefa(), Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        })
+        );
+
+    // Evento do Action Button
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
