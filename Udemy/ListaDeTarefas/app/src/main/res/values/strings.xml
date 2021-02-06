@@ -6,6 +6,9 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <!--Componentes de Menu -->
+    <string name="menu_salvar">Salvar</string>
+    <string name="menu_editar">Editar</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

@@ -1,11 +1,13 @@
 package com.example.listadetarefas.Activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.listadetarefas.Adapter.TarefaAdapter;
 import com.example.listadetarefas.Model.Tarefa;
 import com.example.listadetarefas.R;
+import com.example.listadetarefas.helper.DbHelper;
 import com.example.listadetarefas.helper.RecyclerItemClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -39,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Configurando componentes do BD
+        DbHelper db = new DbHelper(getApplicationContext());
+
+        ContentValues cv =  new ContentValues();
+        cv.put("nome", "Teste 01");
+
+        //Metodo para inserir dados no BD
+        db.getWritableDatabase().insert("tarefas", null, cv);
 
         //Configurar um adapter
         tarefaAdapter = new TarefaAdapter(listaTaferas);
