@@ -25,9 +25,8 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
     // Metodo das opções do menu
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
