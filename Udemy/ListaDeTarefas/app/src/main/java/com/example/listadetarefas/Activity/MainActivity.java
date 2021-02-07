@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Configurando componentes do BD
-        DbHelper db = new DbHelper(getApplicationContext());
+      //  DbHelper db = new DbHelper(getApplicationContext());
 
-        ContentValues cv =  new ContentValues();
-        cv.put("nome", "Teste 01");
+    //    ContentValues cv =  new ContentValues();
+    //    cv.put("nome", "Teste 01");
 
         //Metodo para inserir dados no BD
-        db.getWritableDatabase().insert("tarefas", null, cv);
+      //  db.getWritableDatabase().insert("tarefas", null, cv);
 
         //Configurar um adapter
         tarefaAdapter = new TarefaAdapter(listaTaferas);
