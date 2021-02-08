@@ -44,6 +44,7 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
                 Tarefa tarefa = new Tarefa();
                 tarefa.setNomeTarefa("Ir a praia.");
                 tarefaDao.salvar( tarefa );
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

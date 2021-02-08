@@ -9,6 +9,7 @@ import com.example.listadetarefas.Model.Tarefa;
 import com.example.listadetarefas.R;
 import com.example.listadetarefas.helper.DbHelper;
 import com.example.listadetarefas.helper.RecyclerItemClickListener;
+import com.example.listadetarefas.helper.TarefaDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Configurando componentes do BD
-      //  DbHelper db = new DbHelper(getApplicationContext());
+       // Configurando componentes do BD
+      // DbHelper db = new DbHelper(getApplicationContext());
 
     //    ContentValues cv =  new ContentValues();
     //    cv.put("nome", "Teste 01");
@@ -102,18 +103,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void carregarListaTarefas(){
-        // Listar Tarefas
-        Tarefa tarefa1 = new Tarefa();
-        tarefa1.setNomeTarefa("Ir ao mercado.");
-        listaTaferas.add(tarefa1);
-
-        Tarefa tarefa2 = new Tarefa();
-        tarefa2.setNomeTarefa("Ir a academia.");
-        listaTaferas.add(tarefa2);
-
-        Tarefa tarefa3 = new Tarefa();
-        tarefa3.setNomeTarefa("Ir ao cinema.");
-        listaTaferas.add(tarefa3);
+        TarefaDao tarefaDao = new TarefaDao(getApplicationContext());
+        tarefaDao.listar();
     }
 
     //Sempre o metodo onStart é chamado ele vai atualizar a lista de tarefas
