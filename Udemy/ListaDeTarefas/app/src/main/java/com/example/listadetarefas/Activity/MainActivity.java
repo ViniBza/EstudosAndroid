@@ -40,20 +40,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       // Configurando componentes do BD
-      // DbHelper db = new DbHelper(getApplicationContext());
 
-    //    ContentValues cv =  new ContentValues();
-    //    cv.put("nome", "Teste 01");
-
-        //Metodo para inserir dados no BD
-      //  db.getWritableDatabase().insert("tarefas", null, cv);
 
         //Configurar um adapter
         tarefaAdapter = new TarefaAdapter(listaTaferas);
+
+        carregarListaTarefas();
 
         //Configurar Recycler
         recyclerView = findViewById(R.id.RecyclerListaTarefas);
@@ -100,11 +96,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        carregarListaTarefas();
     }
 
     public void carregarListaTarefas(){
         TarefaDao tarefaDao = new TarefaDao(getApplicationContext());
-        tarefaDao.listar();
+        listaTaferas =  tarefaDao.listar();
     }
 
     //Sempre o metodo onStart é chamado ele vai atualizar a lista de tarefas

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.listadetarefas.Model.Tarefa;
 import com.example.listadetarefas.R;
@@ -22,7 +21,7 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_tarefa);
 
-        editTarefa = findViewById(R.id.textTarefa);
+        editTarefa = findViewById(R.id.editTarefa);
     }
 
     //Metodo de criação do menu
@@ -39,12 +38,17 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.itemSalvar:
+
                 TarefaDao tarefaDao = new TarefaDao(getApplicationContext());
 
-                Tarefa tarefa = new Tarefa();
-                tarefa.setNomeTarefa("Ir a praia.");
-                tarefaDao.salvar( tarefa );
-                finish();
+                String nomeTarefa = editTarefa.getText().toString();
+
+                if ( !nomeTarefa.isEmpty() ){
+                    Tarefa tarefa = new Tarefa();
+                    tarefa.setNomeTarefa( nomeTarefa );
+                    tarefaDao.salvar( tarefa );
+                    finish();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

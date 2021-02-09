@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.IDNA;
 import android.util.Log;
 
 import com.example.listadetarefas.Model.Tarefa;
@@ -29,9 +30,9 @@ public class TarefaDao implements ITarefaDao {
 
         try {
             salvarDados.insert(DbHelper.TABELA_TAFERAS, null, cv);
-            Log.i("INFO OPERAÇÃO", "Tarefa salva com sucesso.");
+            Log.i("INFO SALVAR", "Tarefa salva com sucesso.");
         }catch (Exception e){
-            Log.i("INFO OPERAÇÃO", "Error ao salvar dados. " + e.getMessage());
+            Log.i("INFO SALVAR", "Error ao salvar dados: " + e.getMessage());
             return false;
         }
 
@@ -50,21 +51,33 @@ public class TarefaDao implements ITarefaDao {
 
     @Override
     public List<Tarefa> listar() {
+
         List<Tarefa>  tarefas = new ArrayList<>();
 
-        String sql = "SELECT * FROM " + DbHelper.TABELA_TAFERAS + " ;";
-        Cursor c = lerDados.rawQuery(sql, null);
+        try {
 
-        while (c.moveToNext()){
-            Tarefa tarefa = new Tarefa();
-            Long id = c.getLong(c.getColumnIndex("id"));
-            String nomeTarefa = c.getString(c.getColumnIndex("id"));
+                String sql = "SELECT * FROM " + DbHelper.TABELA_TAFERAS + " ;";
+                Cursor c = lerDados.rawQuery(sql , null);
 
-            tarefa.setId( id );
-            tarefa.setNomeTarefa( nomeTarefa );
-            tarefas.add( tarefa );
+                while (c.moveToNext()){
+                    Tarefa tarefa = new Tarefa();
+
+                    Long id = c.getLong( c.getColumnIndex("id") );
+                    String nomeTarefa = c.getString( c.getColumnIndex("nome") );
+
+                    tarefa.setId( id );
+                    tarefa.setNomeTarefa( nomeTarefa );
+                    tarefas.add( tarefa );
+                    c.moveToNext();
+                }
+                     Log.i("INFO CONSULTA", "Consulta realizada com sucesso.");
+
+                     return tarefas;
         }
+        catch ( Exception e ){
 
-        return tarefas;
+            Log.i("INFO CONSULTA", "Error na consulta: " + e.getMessage());
+         return null;
+        }
     }
 }

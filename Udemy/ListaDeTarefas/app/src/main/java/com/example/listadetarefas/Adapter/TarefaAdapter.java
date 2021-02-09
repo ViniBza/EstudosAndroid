@@ -34,6 +34,8 @@ private List <Tarefa> listaTarefas;
         Tarefa tarefa = listaTarefas.get(position);
         holder.Tarefa.setText(tarefa.getNomeTarefa());
 
+
+
     }
 
     //Definindo a quantidade de itens a ser exibido.
@@ -48,7 +50,7 @@ private List <Tarefa> listaTarefas;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-            Tarefa = itemView.findViewById(R.id.textTarefa);
+            Tarefa = itemView.findViewById(R.id.editTarefa);
         }
     }
 
