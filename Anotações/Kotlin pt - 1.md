@@ -16,13 +16,11 @@
  *Max Value*: em que podemos capturar os valores máximo das variáveis. </p>
 
 
-~~~kotlin
-    fun main() {  
+~~~kotlin 
     println(Int.MAX_VALUE)      // 2147483647
     println(Long.MAX_VALUE)     // 9223372036854775807
     println(Byte.MAX_VALUE)     // 127
     println(Short.MAX_VALUE)    // 32767
-}
 ~~~ 
 
 
