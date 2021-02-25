@@ -1,4 +1,0 @@
-com/estudosandroid/vinibza/alcoolougasolina/MainActivity.java
- com.estudosandroid.vinibza.alcoolougasolina.MainActivity
-com/estudosandroid/vinibza/alcoolougasolina/BuildConfig.java
- com.estudosandroid.vinibza.alcoolougasolina.BuildConfig
