@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Contador Simples</string>
+
+    <string name="app_descricao">Pressione no botão "add +1" e o contador irá aumentar sua contagem.
+        Por regra o contador irá zerar ao chegar em 7.
+    </string>
+
+    <string name="app_contador"> O contador está em:</string>
+</resources>
