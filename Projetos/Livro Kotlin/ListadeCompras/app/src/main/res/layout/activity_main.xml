@@ -8,28 +8,30 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edt_produto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/purple_500"
-        android:hint="Nome do produto" />
 
     <Button
-        android:id="@+id/btn_inserir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Inserir produto"
-        android:textColor="@color/black"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        android:id="@+id/add_produtos"
+        android:text="Adicionar Produtos"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_prod"
+        android:text="TOTAL: 0,00"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        />
 
 
   <ListView
       android:id="@+id/list_view_produtos"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"/>
+      android:layout_marginTop="10dp"
+      />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

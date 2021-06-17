@@ -1,5 +1,6 @@
 package livrokotlin.com.listadecompras
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,18 +26,14 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+       add_produtos.setOnClickListener {
+           val intent = Intent(this, CadastroActivity::class.java)
+           startActivity(intent)
 
-        //Inserir produto na lista
-        btn_inserir.setOnClickListener {
-            val produto = edt_produto.text.toString()
-            edt_produto.text.clear()
+       }
 
-            if (produto.isNotEmpty()){
-                produtosAdapter.add( produto )
-            }else {
-                edt_produto.error = "Por favor, digite o produto."
-            }
-        }
+
+
 
        }
 }
