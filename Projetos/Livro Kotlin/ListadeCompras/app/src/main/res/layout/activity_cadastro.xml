@@ -31,6 +31,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/edt_nome_prod"
         android:hint="Nome do produto"
+        android:backgroundTint="@color/clara"
         />
 
     <EditText
@@ -40,6 +41,7 @@
         android:id="@+id/edt_quantidade_prod"
         android:inputType="number"
         android:hint="Digite a quantidade"
+        android:backgroundTint="@color/clara"
         />
 
     <EditText
@@ -48,6 +50,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/edt_descricao_prod"
         android:hint="Digite uma descrição sobre esse produto"
+        android:backgroundTint="@color/clara"
         />
 
     <EditText
