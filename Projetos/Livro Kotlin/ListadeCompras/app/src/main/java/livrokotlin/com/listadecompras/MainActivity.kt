@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Criando o adaptador da lista
-        val produtosAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1)
+        val produtosAdapter = ProdutoAdapter(this)
         list_view_produtos.adapter = produtosAdapter
 
         //Removendo produto da lista
@@ -31,9 +31,13 @@ class MainActivity : AppCompatActivity() {
            startActivity(intent)
 
        }
-
-
-
-
        }
+
+    override fun onResume() {
+        super.onResume()
+
+        val adapter = list_view_produtos.adapter as ProdutoAdapter
+
+        produtosAdapter.addAll(produtosGlobal)
+    }
 }

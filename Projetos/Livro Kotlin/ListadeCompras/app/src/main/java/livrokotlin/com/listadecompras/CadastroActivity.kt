@@ -22,16 +22,17 @@ class CadastroActivity : AppCompatActivity() {
             if (produto.isNotEmpty() && qtd.isNotEmpty() && valor.isNotEmpty()) {
 
                 val prod = Produto (produto,  qtd.toInt(), descri, valor.toDouble())
+                produtosGlobal.add(prod)
 
 
 
             } else {
 
-                edt_nome_prod.error = if (edt_nome_prod.text.isEmpty()) "pfpf" else null
+                edt_nome_prod.error = if (edt_nome_prod.text.isEmpty()) "Por favor, preencha o nome." else null
 
-                edt_quantidade_prod.error = if (edt_quantidade_prod.text.isEmpty()) "pf, qtd" else null
+                edt_quantidade_prod.error = if (edt_quantidade_prod.text.isEmpty()) "Por favor, preencha a quantidade." else null
 
-                edt_preco_prod.error = if (edt_preco_prod.text.isEmpty()) "pf, preco" else null
+                edt_preco_prod.error = if (edt_preco_prod.text.isEmpty()) "Por favor, preencha a descrição." else null
 
                 /*
                 if (produto.isEmpty()) {

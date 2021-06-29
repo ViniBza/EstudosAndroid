@@ -49,7 +49,7 @@
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
         android:id="@+id/edt_descricao_prod"
-        android:hint="Digite uma descrição sobre esse produto"
+        android:hint="Digite uma descrição sobre esse produto caso necessário."
         android:backgroundTint="@color/clara"
         />
 
