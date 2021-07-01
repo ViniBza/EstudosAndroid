@@ -1,10 +1,15 @@
 package livrokotlin.com.listadecompras
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_cadastro.*
+import android.app.Activity
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class CadastroActivity : AppCompatActivity() {
+    val CODE_IMAGE = 101
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
@@ -14,14 +19,14 @@ class CadastroActivity : AppCompatActivity() {
 
             //Pegando os valores digitados
             val produto = edt_nome_prod.text.toString()
-            val descri = edt_descricao_prod.text.toString()
+
             val qtd = edt_quantidade_prod.text.toString()
             val valor = edt_preco_prod.text.toString()
 
             // Verificando se o usuário digitou algum valor
             if (produto.isNotEmpty() && qtd.isNotEmpty() && valor.isNotEmpty()) {
 
-                val prod = Produto (produto,  qtd.toInt(), descri, valor.toDouble())
+                val prod = Produto (produto,  qtd.toInt(), valor.toDouble())
                 produtosGlobal.add(prod)
 
 
@@ -56,5 +61,33 @@ class CadastroActivity : AppCompatActivity() {
                  */
             }
         }
+
+        img_foto_prod.setOnClickListener(abrirGaleria())
+
+    fun abrirGaleria(){
+        //definindo a ação do conteúdo
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+
+        //defindindo o filtro para imagens
+        intent.type = "image/*"
+
+        //inicializando a activity com resultado
+        //  startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), COD_IMAGE)
+
+        startActivityForResult(Intent.createChooser(intent, "Selecion e uma imagem"), CODE_IMAGE)
+
     }
- }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int,
+                                  data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == this.CODE_IMAGE && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+//Neste ponto podemos acessar a imagem escolhida através da variável "data"
+
+            }
+        }
+    }
+ }}
+

@@ -25,12 +25,12 @@ class ProdutoAdapter (contexto: Context) : ArrayAdapter<Produto>(contexto, 0) {
             val item = getItem(position)
             val img_produto = v.findViewById<ImageView>(R.id.img_prod_item)
             val txt_produto = v.findViewById<TextView>(R.id.nome_prod_item)
-            val descricao = v.findViewById<TextView>(R.id.edt_descricao_prod)
+            //val descricao = v.findViewById<TextView>(R.id.edt_descricao_prod)
             val qtd_prod    = v.findViewById<TextView>(R.id.txt_item_qtd)
             val preco_prod  = v.findViewById<TextView>(R.id.txt_item_valor)
 
             txt_produto.text = item?.nome.toString()
-            descricao.text = item?.descricao.toString()
+          //  descricao.text = item?.descri.toString()
             qtd_prod.text = item?.quantidade.toString()
             preco_prod.text = item?.preco.toString()
 
