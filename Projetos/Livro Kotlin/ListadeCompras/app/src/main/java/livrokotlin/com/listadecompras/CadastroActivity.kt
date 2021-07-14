@@ -5,11 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_cadastro.*
 import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_view_item.*
 
 
 class CadastroActivity : AppCompatActivity() {
     val CODE_IMAGE = 101
+    var imageBitMap: Bitmap? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
@@ -26,10 +33,8 @@ class CadastroActivity : AppCompatActivity() {
             // Verificando se o usuário digitou algum valor
             if (produto.isNotEmpty() && qtd.isNotEmpty() && valor.isNotEmpty()) {
 
-                val prod = Produto (produto,  qtd.toInt(), valor.toDouble())
+                val prod = Produto (produto,  qtd.toInt(), valor.toDouble(), imageBitMap)
                 produtosGlobal.add(prod)
-
-
 
             } else {
 
@@ -62,9 +67,15 @@ class CadastroActivity : AppCompatActivity() {
             }
         }
 
-        img_foto_prod.setOnClickListener(abrirGaleria())
+        img_foto_prod.setOnClickListener { abrirGaleria() }
 
-    fun abrirGaleria(){
+        Toast.makeText(this, "Adicionado com sucesso!", Toast.LENGTH_SHORT).show()
+
+        finish()
+
+    }
+
+    fun abrirGaleria() {
         //definindo a ação do conteúdo
         val intent = Intent(Intent.ACTION_GET_CONTENT)
 
@@ -72,22 +83,31 @@ class CadastroActivity : AppCompatActivity() {
         intent.type = "image/*"
 
         //inicializando a activity com resultado
-        //  startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), COD_IMAGE)
-
-        startActivityForResult(Intent.createChooser(intent, "Selecion e uma imagem"), CODE_IMAGE)
-
+        startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), CODE_IMAGE)
     }
 
-    fun onActivityResult(requestCode: Int, resultCode: Int,
-                                  data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == this.CODE_IMAGE && resultCode == Activity.RESULT_OK) {
-            if (data != null) {
-//Neste ponto podemos acessar a imagem escolhida através da variável "data"
+        if(requestCode == CODE_IMAGE && resultCode == Activity.RESULT_OK){
+            if (data != null){
+                // Neste ponto podemos acessar a imagem escolhida através da variável "data"
 
+                // Lendo URI com a imagem
+                val inputStream = data.getData()?.let { contentResolver.openInputStream(it) };
+
+                // Transformando resultado em bitmap
+                imageBitMap = BitmapFactory.decodeStream(inputStream)
+
+                // Exibir a imagem no app
+                img_foto_prod.setImageBitmap(imageBitMap)
             }
         }
     }
- }}
+}
+
+
+
+
+
 

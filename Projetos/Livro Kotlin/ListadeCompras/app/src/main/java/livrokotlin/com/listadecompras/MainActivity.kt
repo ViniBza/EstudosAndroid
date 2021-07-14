@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
            startActivity(intent)
 
        }
-
  }
 
 
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = list_view_produtos.adapter as ProdutoAdapter
         adapter.addAll(produtosGlobal)
-
 
         /* Fazendo o somatório de preços dos produtos com uma lista de repetição
         var soma = 0.0
