@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Criando o adaptador da lista
+        //Criando o a                                      daptador da lista
         val produtosAdapter = ProdutoAdapter(this)
         list_view_produtos.adapter = produtosAdapter
 

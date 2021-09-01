@@ -1,4 +1,4 @@
-package livrokotlin.com.listadecompras
+    package livrokotlin.com.listadecompras
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
