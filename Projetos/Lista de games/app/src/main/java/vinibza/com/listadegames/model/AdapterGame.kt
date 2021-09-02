@@ -1,6 +1,5 @@
 package vinibza.com.listadegames.model
 
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import kotlinx.android.synthetic.main.layout_game_item.view.*
 import vinibza.com.listadegames.R
 
 class AdapterGame: RecyclerView.Adapter<AdapterGame.myViewHolder>() {
-    private val listaGames: List<Game> = ArrayList()
+    private var listaGames: List<Game> = ArrayList()
 
     class myViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         var item_title: TextView = itemView.item_game_title
@@ -30,8 +29,17 @@ class AdapterGame: RecyclerView.Adapter<AdapterGame.myViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        when  (holder) {
+            is myViewHolder ->{
+                holder.bind(listaGames[position])
+            }
+        }
     }
+
+    fun setDados(arrayGames: ArrayList<Game>){
+        this.listaGames = arrayGames
+    }
+
 
     override fun getItemCount(): Int {
         return listaGames.size
