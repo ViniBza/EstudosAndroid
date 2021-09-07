@@ -9,16 +9,18 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.layout_game_item.view.*
 import vinibza.com.listadegames.R
 
-class AdapterGame: RecyclerView.Adapter<AdapterGame.myViewHolder>() {
+class AdapterGame (private val onItemClicked: (Game) -> Unit)
+        : RecyclerView.Adapter<AdapterGame.myViewHolder>() {
+
     private var listaGames: List<Game> = ArrayList()
 
     class myViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-       private val item_title = itemView.item_game_title
+        private val item_title = itemView.item_game_title
         private val item_genre = itemView.item_game_gnr
         private val item_thumbnail = itemView.item_game_img
-        
 
-        fun bind (game: Game){
+
+        fun bind (game: Game, onItemClicked: (Game) -> Unit){
             item_title.text = game.title
             item_genre.text = game.genre
 
@@ -31,6 +33,7 @@ class AdapterGame: RecyclerView.Adapter<AdapterGame.myViewHolder>() {
                 .load(game.thumbnailUrl)
                 .into(item_thumbnail)
 
+            itemView.setOnClickListener { onItemClicked( game ) }
         }
     }
 
@@ -41,13 +44,15 @@ class AdapterGame: RecyclerView.Adapter<AdapterGame.myViewHolder>() {
         )
     }
 
+
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
         when  (holder) {
             is myViewHolder -> {
-                holder.bind(listaGames[position])
+                holder.bind(listaGames[position], onItemClicked)
             }
         }
     }
+
 
     fun setDados(arrayGames: List<Game>){
         this.listaGames = arrayGames
