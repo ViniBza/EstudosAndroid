@@ -3,7 +3,7 @@
 
 Com esse app aprendi como implementar e o funcionamento do RecyclerView, criando Cards com as fotos dos jogos com seus respectivos nomes e gêneros. 
 
-Usei a biblioteca [Glide](https://github.com/bumptech/glide) para o carregamento das imagens que estão na internet, por fim ao clicar no jogo escolhido o app abre o navegador do cell com a página do jogo.
+Usei a biblioteca [Glide](https://github.com/bumptech/glide) para o carregamento das imagens que estão na internet, por fim ao clicar no jogo escolhido o app abre o navegador do cell com a página da wikipédia do jogo.
 
 O app base foi criado na seguinte live que acompanhei no youtube: [KotlinRecyclerView](https://github.com/kaiqueocanha/KotlinRecyclerView).
 
