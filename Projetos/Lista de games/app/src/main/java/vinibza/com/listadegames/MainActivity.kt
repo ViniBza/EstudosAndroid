@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecycler() {
 
+        this.gameAdapter = AdapterGame()
         recycler_principal.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = gameAdapter
@@ -29,6 +30,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initDados(){
         val listaGames = DataSource.setDataSet()
-        this.gameAdapter.setDados(listaGames)
+        gameAdapter.setDados(listaGames)
     }
 }

@@ -6,7 +6,7 @@ class DataSource {
 
     companion object {
         fun setDataSet() : ArrayList<Game>{
-             var list: ArrayList<Game> = ArrayList()
+             var list = ArrayList<Game>()
 
             list.add(
                 Game(
