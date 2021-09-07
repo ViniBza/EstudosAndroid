@@ -5,6 +5,8 @@ Com esse app aprendi como implementar e o funcionamento do RecyclerView, criando
 
 Usei a biblioteca [Glide](https://github.com/bumptech/glide) para o carregamento das imagens que estão na internet, por fim ao clicar no jogo escolhido o app abre o navegador do cell com a página do jogo.
 
+O app base foi criado na seguinte live que acompanhei no youtube: [KotlinRecyclerView](https://github.com/kaiqueocanha/KotlinRecyclerView).
+
 * _Gifs de funcionamento do aplicativo:_
 
 ![ListaDeGames](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Lista%20de%20games%20-%201.gif) ![ListaDeGames](https://github.com/ViniBza/EstudosAndroid/blob/master/Imagens-Gifs/Lista%20de%20games%20-%202.gif)
