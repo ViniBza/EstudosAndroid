@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.ActivityFormularioAluno"
+    >
+
+    <EditText
+        android:id="@+id/activity_formulario_edtNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Nome: "/>
+
+    <EditText
+        android:id="@+id/activity_formulario_edtTelefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Telefone: "/>
+
+    <EditText
+        android:id="@+id/activity_formulario_edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Email: "/>
+
+    <Button
+        android:id="@+id/activity_formulario_btnSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar Aluno"/>
+
+</LinearLayout>
+
+
+

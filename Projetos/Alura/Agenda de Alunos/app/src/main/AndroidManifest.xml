@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgendaDeAlunos">
         <activity
+            android:name=".ui.ActivityFormularioAluno"
+            android:exported="true" />
+        <activity
             android:name=".ui.ActivityListaAlunos"
             android:exported="true">
             <intent-filter>

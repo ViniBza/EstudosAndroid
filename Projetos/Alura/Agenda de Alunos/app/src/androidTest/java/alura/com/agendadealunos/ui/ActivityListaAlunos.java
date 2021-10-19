@@ -14,11 +14,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import alura.com.agendadealunos.Dao.AlunoDao;
 import alura.com.agendadealunos.R;
+import alura.com.agendadealunos.model.Aluno;
 
 public class ActivityListaAlunos extends AppCompatActivity {
 
     public static final String APPBAR_TITLE = "Lista de Alunos";
+    private final AlunoDao alunodao = new AlunoDao();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +35,17 @@ public class ActivityListaAlunos extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        exibirListaAlunos();
+        exibirListaAlunos(alunodao);
     }
 
-    private void exibirListaAlunos() {
-        //Lista de teste
-        List<String> alunos = new ArrayList<>(Arrays.asList("Vinicio", "João", "Giovane", "Leandro"));
+    private void exibirListaAlunos(AlunoDao alunodao) {
+        /*  Lista de teste
+            List<String> alunos = new ArrayList<>(Arrays.asList("Vinicio", "João", "Giovane", "Leandro"));
+        */
 
         ListView listaAlunos = findViewById(R.id.activity_lista_alunos_listview);
-           listaAlunos.setAdapter(new ArrayAdapter<>(
-                   this, android.R.layout.simple_dropdown_item_1line,alunos
+           listaAlunos.setAdapter(new ArrayAdapter<Aluno>(
+                   this, android.R.layout.simple_dropdown_item_1line,alunodao.exibirAlunos()
            ));
 
     }
@@ -51,11 +55,12 @@ public class ActivityListaAlunos extends AppCompatActivity {
         btn_add_aluno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamarFormularioActivity();
+                abrirFormularioActivity();
             }
         });
     }
 
-    private void chamarFormularioActivity() {
+    private void abrirFormularioActivity() {
+        startActivity(new Intent(ActivityListaAlunos.this, ActivityFormularioAluno.class));
     }
 }

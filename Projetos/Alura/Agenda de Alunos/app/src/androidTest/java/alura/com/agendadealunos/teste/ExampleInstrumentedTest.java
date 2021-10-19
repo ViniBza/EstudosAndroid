@@ -1,4 +1,4 @@
-package alura.com.agendadealunos;
+package alura.com.agendadealunos.teste;
 
 import android.content.Context;
 
