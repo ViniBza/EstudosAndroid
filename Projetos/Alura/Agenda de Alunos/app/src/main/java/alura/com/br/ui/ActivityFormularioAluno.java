@@ -24,22 +24,21 @@ public class ActivityFormularioAluno extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_aluno);
         setTitle(APPBAR_TITULO);
-        iniciarCampos();
+
         final AlunoDao alunoDao = new AlunoDao();
+        iniciarCampos();
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Aluno aluno =  criarAluno();
-                AlunoDao.salvar(aluno);
-
                 salvar(aluno, alunoDao);
             }
         });
     }
 
     private void salvar(Aluno aluno, AlunoDao alunoDao) {
-        AlunoDao.salvar(aluno);
+        alunoDao.salvar(aluno);
         finish();
     }
 

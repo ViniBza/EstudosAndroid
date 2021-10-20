@@ -32,6 +32,22 @@ public class ActivityListaAlunos extends AppCompatActivity {
 
     }
 
+
+    private void iniciarBtn() {
+        FloatingActionButton btn_add_aluno = findViewById(R.id.lista_alunos_fab_add_aluno);
+        btn_add_aluno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirFormularioActivity();
+            }
+        });
+    }
+
+
+    private void abrirFormularioActivity() {
+        startActivity(new Intent(ActivityListaAlunos.this, ActivityFormularioAluno.class));
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -44,23 +60,13 @@ public class ActivityListaAlunos extends AppCompatActivity {
         */
 
         ListView listaAlunos = findViewById(R.id.activity_lista_alunos_listview);
-           listaAlunos.setAdapter(new ArrayAdapter<Aluno>(
+           listaAlunos.setAdapter(new ArrayAdapter<>(
                    this, android.R.layout.simple_dropdown_item_1line,alunodao.exibirAlunos()
            ));
 
     }
 
-    private void iniciarBtn() {
-        FloatingActionButton btn_add_aluno = findViewById(R.id.lista_alunos_fab_add_aluno);
-        btn_add_aluno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abrirFormularioActivity();
-            }
-        });
-    }
 
-    private void abrirFormularioActivity() {
-        startActivity(new Intent(ActivityListaAlunos.this, ActivityFormularioAluno.class));
-    }
+
+
 }
