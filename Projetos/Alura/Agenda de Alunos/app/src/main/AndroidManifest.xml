@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgendaDeAlunos">
         <activity
-            android:name=".ui.ActivityFormularioAluno"
+            android:name="alura.com.br.ui.ActivityFormularioAluno"
             android:exported="true" />
         <activity
-            android:name=".ui.ActivityListaAlunos"
+            android:name="alura.com.br.ui.ActivityListaAlunos"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,19 +1,22 @@
-package alura.com.agendadealunos.ui;
+package alura.com.br.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import alura.com.agendadealunos.Dao.AlunoDao;
+import androidx.appcompat.app.AppCompatActivity;
+
 import alura.com.agendadealunos.R;
-import alura.com.agendadealunos.model.Aluno;
+import alura.com.br.model.Aluno;
+import alura.com.br.Dao.AlunoDao;
 
 public class ActivityFormularioAluno extends AppCompatActivity {
 
     public static final String APPBAR_TITULO = "Formulario de Cadastro";
+    private Aluno aluno;
     private EditText edt_nome;
     private EditText edt_telefone;
     private EditText edt_email;
@@ -27,6 +30,18 @@ public class ActivityFormularioAluno extends AppCompatActivity {
 
         final AlunoDao alunoDao = new AlunoDao();
         iniciarCampos();
+        Intent dadosAluno = getIntent();
+
+        if (dadosAluno.hasExtra("AlunoExtra")){
+            aluno = (Aluno) dadosAluno.getSerializableExtra("AlunoExtra");
+            edt_nome.setText(aluno.getNome());
+            edt_telefone.setText(aluno.getTelefone());
+            edt_email.setText(aluno.getEmail());
+        }else {
+            aluno = new Aluno();
+        }
+
+
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +62,8 @@ public class ActivityFormularioAluno extends AppCompatActivity {
         String nome = edt_nome.getText().toString();
         String telefone = edt_telefone.getText().toString();
         String email = edt_email.getText().toString();
-
         Aluno aluno = new Aluno(nome, telefone, email);
-
         return aluno;
-
     }
 
     private void iniciarCampos() {

@@ -1,27 +1,26 @@
-package alura.com.agendadealunos.ui;
-
-import androidx.appcompat.app.AppCompatActivity;
+package alura.com.br.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import alura.com.agendadealunos.Dao.AlunoDao;
 import alura.com.agendadealunos.R;
-import alura.com.agendadealunos.model.Aluno;
+import alura.com.br.Dao.AlunoDao;
+import alura.com.br.model.Aluno;
 
 public class ActivityListaAlunos extends AppCompatActivity {
 
     public static final String APPBAR_TITLE = "Lista de Alunos";
-    private final AlunoDao alunodao = new AlunoDao();
+    private final AlunoDao dao = new AlunoDao();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +50,39 @@ public class ActivityListaAlunos extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        exibirListaAlunos(alunodao);
+        exibirListaAlunos();
     }
 
-    private void exibirListaAlunos(AlunoDao alunodao) {
+    private void exibirListaAlunos() {
         /*  Lista de teste
             List<String> alunos = new ArrayList<>(Arrays.asList("Vinicio", "João", "Giovane", "Leandro"));
         */
 
         ListView listaAlunos = findViewById(R.id.activity_lista_alunos_listview);
-           listaAlunos.setAdapter(new ArrayAdapter<>(
-                   this, android.R.layout.simple_dropdown_item_1line,alunodao.exibirAlunos()
-           ));
-
+        List<Aluno> aluno = dao.exibirAlunos();
+        configuraAdapter(listaAlunos, aluno);
+        configuraAlunoSelecionado(listaAlunos, aluno);
     }
 
+    private void configuraAlunoSelecionado(ListView listaAlunos, List<Aluno> aluno) {
+        listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Aluno alunoSelecionado = (Aluno) adapterView.getItemAtPosition(position);
+                vaiParaFormularioActivity(alunoSelecionado);
+            }
+        });
+    }
 
+    private void vaiParaFormularioActivity(Aluno alunoSelecionado) {
+        Intent intentFormulario = new Intent(ActivityListaAlunos.this, ActivityFormularioAluno.class);
+        intentFormulario.putExtra("AlunoExtra", alunoSelecionado);
+        startActivity(intentFormulario);
+    }
 
-
+    private void configuraAdapter(ListView listaAlunos, List<Aluno> alunos) {
+        listaAlunos.setAdapter(new ArrayAdapter<>(
+                this, android.R.layout.simple_dropdown_item_1line, alunos
+        ));
+    }
 }

@@ -1,9 +1,9 @@
-package alura.com.agendadealunos.Dao;
+package alura.com.br.Dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import alura.com.agendadealunos.model.Aluno;
+import alura.com.br.model.Aluno;
 
 public class AlunoDao {
 
