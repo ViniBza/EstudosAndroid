@@ -13,16 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import alura.com.agendadealunos.R;
 import alura.com.br.Dao.AlunoDao;
 import alura.com.br.model.Aluno;
 
 public class ActivityListaAlunos extends AppCompatActivity {
     public static final String APPBAR_TITLE = "Lista de Alunos";
-
     private final AlunoDao dao = new AlunoDao();
+    private ArrayAdapter<Aluno> adapter;
 
 
     @Override
@@ -31,6 +29,7 @@ public class ActivityListaAlunos extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         setTitle(APPBAR_TITLE);
         iniciarBtn();
+        configuraAdapterLista();
 
     }
 
@@ -53,18 +52,31 @@ public class ActivityListaAlunos extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        exibirListaAlunos();
+        adapter.clear();
+        adapter.addAll(dao.exibirAlunos());
     }
 
-    private void exibirListaAlunos() {
+    private void configuraAdapterLista() {
         ListView listaAlunos = findViewById(R.id.activity_lista_alunos_listview);
-        List<Aluno> aluno = dao.exibirAlunos();
-        configuraAdapter(listaAlunos, aluno);
-        configuraAlunoSelecionado(listaAlunos, aluno);
+        configuraAdapter(listaAlunos);
+        configuraClickSimplesEditarAluno(listaAlunos);
+        configurarClickLongRemoverAluno(listaAlunos);
+    }
+
+    private void configurarClickLongRemoverAluno(ListView listaAlunos) {
+        listaAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Aluno alunoSelecionado = (Aluno) adapterView.getItemAtPosition(position);
+                dao.remover(alunoSelecionado);
+                adapter.remove(alunoSelecionado);
+                return true;
+            }
+        });
     }
 
 
-    private void configuraAlunoSelecionado(ListView listaAlunos, List<Aluno> aluno) {
+    private void configuraClickSimplesEditarAluno(ListView listaAlunos) {
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -80,9 +92,12 @@ public class ActivityListaAlunos extends AppCompatActivity {
         startActivity(intentFormulario);
     }
 
-    private void configuraAdapter(ListView listaAlunos, List<Aluno> alunos) {
-        listaAlunos.setAdapter(new ArrayAdapter<>(
-                this, android.R.layout.simple_dropdown_item_1line, alunos
+
+
+    private void configuraAdapter(ListView listaAlunos) {
+        adapter = (new ArrayAdapter<>(
+                this, android.R.layout.simple_dropdown_item_1line
         ));
+        listaAlunos.setAdapter(adapter);
     }
 }

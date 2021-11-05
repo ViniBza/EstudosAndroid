@@ -31,7 +31,17 @@ public class AlunoDao {
         }
         return null;
     }
-    
+
+    public void remover(Aluno aluno){
+        Aluno alunoEscolhido = buscarAlunoPeloId(aluno);
+
+            if (alunoEscolhido != null){
+                int posicaoAluno = alunos.indexOf(alunoEscolhido);
+                alunos.remove(posicaoAluno);
+            }
+
+
+    }
     public ArrayList<Aluno> exibirAlunos(){
         return new ArrayList<>(alunos);
     }
