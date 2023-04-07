@@ -15,7 +15,6 @@ import alura.com.br.Dao.AlunoDao;
 import alura.com.br.model.Aluno;
 
 public class ActivityFormularioAluno extends AppCompatActivity {
-
     public static final String APPBAR_TITULO_CADASTRO = "Cadastrar Aluno";
     public static final String APPBAR_TITULO_EDITAR = "Editar Aluno";
     private Aluno aluno;
@@ -81,12 +80,9 @@ public class ActivityFormularioAluno extends AppCompatActivity {
         }
         else {
             setTitle(APPBAR_TITULO_CADASTRO);
+            AlunoDao.salvar( new Aluno("Joao", "1111-2222","Joao@joao.com"));
             dao.salvar(aluno);
         }
     }
-
-
-
-
 
 }

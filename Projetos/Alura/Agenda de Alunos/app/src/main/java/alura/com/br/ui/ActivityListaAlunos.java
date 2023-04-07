@@ -2,30 +2,26 @@ package alura.com.br.ui;
 
 import static alura.com.br.ui.ConstantsActivities.CHAVE_ALUNO;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import alura.com.agendadealunos.R;
-import alura.com.br.Dao.AlunoDao;
 import alura.com.br.model.Aluno;
 
 public class ActivityListaAlunos extends AppCompatActivity {
     public static final String APPBAR_TITLE = "Lista de Alunos";
-    private final AlunoDao dao = new AlunoDao();
-    private ArrayAdapter<Aluno> adapter;
+    private final ListaAlunosView listaAlunosView = new ListaAlunosView(this);
+
 
 
     @Override
@@ -34,7 +30,7 @@ public class ActivityListaAlunos extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         setTitle(APPBAR_TITLE);
         configurarFabNovoAluno();
-        configuraAdapterLista();
+        configuraLista();
 
     }
 
@@ -42,7 +38,8 @@ public class ActivityListaAlunos extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        getMenuInflater().inflate(R.menu.activity_lista_alunos_menu, menu);
+        getMenuInflater()
+                .inflate(R.menu.activity_lista_alunos_menu, menu);
     }
 
 
@@ -50,25 +47,9 @@ public class ActivityListaAlunos extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.activity_lista_alunos_menu_rm){
-        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Aluno alunoEscolhido = adapter.getItem(menuInfo.position);
-            exibeAlertaDeRemocao(alunoEscolhido);
+                listaAlunosView.exibeAlertaDeRemocao(item);
         }
         return super.onContextItemSelected(item);
-    }
-
-    private void exibeAlertaDeRemocao(Aluno alunoEscolhido) {
-        new AlertDialog.Builder(this)
-                .setTitle("Removendo Aluno")
-                .setMessage("Deseja realmente remover o aluno?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        removerAluno(alunoEscolhido);
-                    }
-                })
-                .setNegativeButton("Não", null)
-                .show();
     }
 
 
@@ -90,23 +71,19 @@ public class ActivityListaAlunos extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.clear();
-        adapter.addAll(dao.exibirAlunos());
+        listaAlunosView.atualizaAlunos();
     }
 
-    private void configuraAdapterLista() {
+    private void configuraLista() {
         ListView listaAlunos = findViewById(R.id.activity_lista_alunos_listview);
-        configuraAdapter(listaAlunos);
+       listaAlunosView.configuraAdapter(listaAlunos);
         configuraClickSimplesEditarAluno(listaAlunos);
+
+/* registerForContextMenu Indica ao android que em nossa listView ao ter um clickLong
+ ele disparará um menu de contexto que será montado no onCreatContextMenu
+ */
         registerForContextMenu(listaAlunos);
     }
-
-
-    private void removerAluno(Aluno alunoSelecionado) {
-        dao.remover(alunoSelecionado);
-        adapter.remove(alunoSelecionado);
-    }
-
 
     private void configuraClickSimplesEditarAluno(ListView listaAlunos) {
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,12 +101,4 @@ public class ActivityListaAlunos extends AppCompatActivity {
         startActivity(intentFormulario);
     }
 
-
-
-    private void configuraAdapter(ListView listaAlunos) {
-        adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_dropdown_item_1line
-        );
-        listaAlunos.setAdapter(adapter);
-    }
 }

@@ -7,5 +7,5 @@
 
     <item
         android:id="@+id/activity_lista_alunos_menu_segunda_op"
-        android:title="Segunda Opção" />
+        android:title="Opção desativada" />
 </menu>
