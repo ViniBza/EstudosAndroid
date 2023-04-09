@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import useful.PriceUseful;
+
 public class Package {
 
     private final String local;
@@ -32,14 +34,8 @@ public class Package {
     }
 
    public String getPreco() {
-       NumberFormat formatBr = DecimalFormat.getCurrencyInstance(
-               new Locale("pt", "br"));
+       return PriceUseful.putPrice(preco);
 
-      return formatBr
-              .format(preco)
-              .replace("R$", "R$ ");
     }
-
-
 
 }

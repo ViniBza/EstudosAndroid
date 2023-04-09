@@ -1,5 +1,6 @@
 package adapter;
 
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -15,6 +16,9 @@ import com.estudos.travellist.R;
 import java.util.List;
 
 import model.Package;
+import useful.DayUseful;
+import useful.ImageUseful;
+import useful.LocalUsefel;
 
 public class ListPackageAdapter extends BaseAdapter {
 
@@ -49,28 +53,38 @@ public class ListPackageAdapter extends BaseAdapter {
                 .inflate(R.layout.item_packge,parent, false );
         Package packageReturn = packages.get(position);
 
-        TextView local = viewReturn.findViewById(R.id.item_package_txt_local);
-        String localTxt = packageReturn.getLocal();
-        local.setText(localTxt);
+        showLocal(viewReturn, packageReturn);
+        showImage(viewReturn, packageReturn);
+        showDay(viewReturn, packageReturn);
+        showPrice(viewReturn, packageReturn);
 
-        ImageView image = viewReturn.findViewById(R.id.item_package_imgView);
-        Resources resources = context.getResources();
-        String drawableText = packageReturn.getImagem();
-        int idDrawable = resources.getIdentifier(
-                drawableText,
-                "drawable",
-                context.getPackageName());
-        Drawable drawable = resources.getDrawable(idDrawable);
-        image.setImageDrawable(drawable);
+        return viewReturn;
+    }
 
-        TextView days = viewReturn.findViewById(R.id.item_package_days);
-        int daysTxt;
-        daysTxt = packageReturn.getDias();
-        days.setText(daysTxt+"");
-
+    private void showPrice(View viewReturn, Package packageReturn) {
         TextView price = viewReturn.findViewById(R.id.item_package_price);
         String priceTxt = packageReturn.getPreco();
         price.setText(priceTxt);
-        return viewReturn;
     }
+
+    private void showDay(View viewReturn, Package packageReturn) {
+        TextView textDay = viewReturn.findViewById(R.id.item_package_days);
+        int dayVar = packageReturn.getDias();
+        textDay.setText(DayUseful.putDays(dayVar));
+    }
+
+    private void showImage(View viewReturn, Package packageReturn) {
+        ImageView image = viewReturn.findViewById(R.id.item_package_imgView);
+        Drawable drawableVar = ImageUseful.putImage(context, packageReturn.getImagem());
+        image.setImageDrawable(drawableVar);
+    }
+
+    private void showLocal(View viewReturn, Package packageReturn) {
+        TextView textLocal = viewReturn.findViewById(R.id.item_package_txt_local);
+        String localVar = LocalUsefel.putLocal(packageReturn);
+        textLocal.setText(localVar);
+    }
+
+
 }
+

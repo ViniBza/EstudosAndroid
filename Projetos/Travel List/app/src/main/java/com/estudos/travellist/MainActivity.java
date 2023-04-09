@@ -17,10 +17,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        configList();
+        configureList();
+        setTitle("");
+
     }
 
-    private void configList() {
+    private void configureList() {
         ListView listView = findViewById(R.id.actv_main_listView);
         List<Package> packages = new PackageDao().lista();
         listView.setAdapter(new ListPackageAdapter(packages,this));
