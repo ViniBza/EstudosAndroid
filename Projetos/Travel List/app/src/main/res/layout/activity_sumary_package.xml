@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SumaryPackageActivity">
+
+    <ImageView
+        android:id="@+id/act_sum_img"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@drawable/sao_paulo_sp" />
+
+    <TextView
+        android:id="@+id/act_sum_txt_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="São Paulo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/act_sum_img"
+        />
+
+    <TextView
+        android:id="@+id/act_sum_txt_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2 Dias"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/act_sum_txt_city"
+        app:layout_constraintStart_toStartOf="@id/act_sum_txt_city"
+        />
+
+    <TextView
+        android:id="@+id/act_sum_txt_period"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="05/01 - 07/01 de 2018"
+        app:layout_constraintStart_toStartOf="@id/act_sum_txt_days"
+        app:layout_constraintTop_toBottomOf="@id/act_sum_txt_days"
+        app:layout_constraintEnd_toStartOf="@id/act_sum_price"/>
+    <TextView
+        android:id="@+id/act_sum_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="R$ 243,99"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="textEnd"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/act_sum_txt_period"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/act_sum_txt_period"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preco Final:"
+        app:layout_constraintBottom_toTopOf="@id/act_sum_price"
+        app:layout_constraintEnd_toEndOf="@id/act_sum_price"/>
+
+    <Button
+        android:id="@+id/act_sum_btn_chose"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+        android:text="Chose this Package"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
