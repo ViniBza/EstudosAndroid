@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Travel List</string>
+    <string name="main_text_payment_activity">Write your card payment information that you would like to use.</string>
 </resources>
